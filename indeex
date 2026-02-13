@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Będziesz moją walentynką?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #333;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .buttons {
+            display: flex;
+            gap: 2em;
+        }
+        button {
+            padding: 1em 2em;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .tak {
+            background: #4CAF50;
+            color: white;
+        }
+        .tak:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+        }
+        .nie {
+            background: #f44336;
+            color: white;
+            font-size: 1.8em; /* Duży na start */
+            animation: pulse 1s infinite;
+        }
+        .nie:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 25px rgba(244,67,54,0.4);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .response {
+            margin-top: 2em;
+            font-size: 2em;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .response.show {
+            opacity: 1;
+        }
+        .konfetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>🫂 Czy zostaniesz moją walentynką? 🫂</h1>
+    <div class="buttons">
+        <button class="tak" onclick="odpowiedz('Tak! 💖')">Tak</button>
+        <button class="nie" id="nieBtn" onclick="odpowiedz('NIE MA Opcji "NIE"! 💕')">Nie</button>
+    </div>
+    <div class="response" id="response"></div>
+    <div class="konfetti" id="konfetti"></div>
+
+    <script>
+        function odpowiedz(tekst) {
+            document.getElementById('response').innerText = tekst;
+            document.getElementById('response').classList.add('show');
+            document.querySelector('.buttons').style.display = 'none';
+            
+            if (tekst.includes('Tak') || tekst.includes('NIE')) {
+                stworzKonfetti();
+            }
+        }
+
+        function stworzKonfetti() {
+            const konfetti = document.getElementById('konfetti');
+            for (let i = 0; i < 100; i++) {
+                const snow = document.createElement('div');
+                snow.style.position = 'fixed';
+                snow.style.left = Math.random() * 100 + '%';
+                snow.style.width = Math.random() * 10 + 5 + 'px';
+                snow.style.height = snow.style.width;
+                snow.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                snow.style.borderRadius = '50%';
+                snow.style.pointerEvents = 'none';
+                snow.style.zIndex = '1001';
+                snow.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                konfetti.appendChild(snow);
+            }
+        }
+
+        // Dodaj animację CSS dla konfetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
