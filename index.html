@@ -48,10 +48,7 @@
             font-size: 1.8em;
             animation: pulse 1s infinite;
         }
-        .nie:hover {
-            transform: scale(1.2);
-            box-shadow: 0 8px 25px rgba(244,67,54,0.4);
-        }
+        /* Usunięto powiększenie dla .nie:hover */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -81,7 +78,7 @@
 <body>
     <h1>🫂 Julio, czy zostaniesz moją walentynką? 🫂</h1>
     <div class="buttons">
-        <button class="tak" onclick="odpowiedz('Jej jestem najszczęśliwszy na świecie i przepraszam za bycie głąbem :(')">Tak</button>
+        <button class="tak" onclick="odpowiedz('Jej!!! 💖💖💖 Jestem najszczęśliwszy na świecie i przepraszam za bycie głąbem :(')">Tak</button>
         <button class="nie" id="nieBtn" onclick="odpowiedz('NIE MA Opcji "NIE"! 💕')">Nie</button>
     </div>
     <div class="response" id="response"></div>
