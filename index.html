@@ -48,7 +48,10 @@
             font-size: 1.8em;
             animation: pulse 1s infinite;
         }
-        /* Brak :hover dla .nie */
+        .nie:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 25px rgba(244,67,54,0.4);
+        }
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -78,38 +81,21 @@
 <body>
     <h1>🫂 Julio, czy zostaniesz moją walentynką? 🫂</h1>
     <div class="buttons">
-        <button class="tak" id="takBtn" onclick="odpowiedzTak()">Tak</button>
-        <button class="nie" id="nieBtn" onclick="odpowiedzNie()">Nie</button>
+        <button class="tak" onclick="odpowiedz('Jej!!! 💖💖💖 Jestem najszczęśliwszy na świecie i przepraszam za bycie głąbem :(')">Tak</button>
+        <button class="nie" id="nieBtn" onclick="odpowiedz('NIE MA Opcji "NIE"! 💕')">Nie</button>
     </div>
     <div class="response" id="response"></div>
     <div class="konfetti" id="konfetti"></div>
 
     <script>
-        function odpowiedzTak() {
-            document.getElementById('response').innerText = 'Jej!!! 💖💖💖 Jestem najszczęśliwszy na świecie i przepraszam za bycie głąbem :(';
+        function odpowiedz(tekst) {
+            document.getElementById('response').innerText = tekst;
             document.getElementById('response').classList.add('show');
             document.querySelector('.buttons').style.display = 'none';
-            stworzKonfetti();
-        }
-
-        function odpowiedzNie() {
-            document.getElementById('response').innerText = 'NIE MA Opcji "NIE"! 💕';
-            document.getElementById('response').classList.add('show');
-            document.querySelector('.buttons').style.display = 'none';
-            stworzKonfetti();
             
-            // Powiększ przycisk Tak po kliknięciu Nie
-            const takBtn = document.getElementById('takBtn');
-            takBtn.style.transform = 'scale(1.3)';
-            takBtn.style.transition = 'transform 0.5s ease';
-            
-            setTimeout(() => {
-                takBtn.style.transform = 'scale(1.1)';
-            }, 200);
-            
-            setTimeout(() => {
-                takBtn.style.transform = 'scale(1)';
-            }, 500);
+            if (tekst.includes('Tak') || tekst.includes('NIE')) {
+                stworzKonfetti();
+            }
         }
 
         function stworzKonfetti() {
