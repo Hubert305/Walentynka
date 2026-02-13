@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Będziesz moją walentynką?</title>
+    <title>Julio, bądź moją walentynką?</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +45,7 @@
         .nie {
             background: #f44336;
             color: white;
-            font-size: 1.8em; /* Duży na start */
+            font-size: 1.8em;
             animation: pulse 1s infinite;
         }
         .nie:hover {
@@ -79,9 +79,9 @@
     </style>
 </head>
 <body>
-    <h1>🫂 Czy zostaniesz moją walentynką? 🫂</h1>
+    <h1>🫂 Julio, czy zostaniesz moją walentynką? 🫂</h1>
     <div class="buttons">
-        <button class="tak" onclick="odpowiedz('Tak! 💖')">Tak</button>
+        <button class="tak" onclick="odpowiedz('Jej jestem najszczęśliwszy na świecie i przepraszam za bycie głąbem :(')">Tak</button>
         <button class="nie" id="nieBtn" onclick="odpowiedz('NIE MA Opcji "NIE"! 💕')">Nie</button>
     </div>
     <div class="response" id="response"></div>
@@ -115,7 +115,6 @@
             }
         }
 
-        // Dodaj animację CSS dla konfetti
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fall {
